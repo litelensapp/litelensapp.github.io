@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && vite build --ssr src/server/index.tsx --outDir dist/ssr-build && node build/prerender.mjs",
     "lint": "oxlint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
