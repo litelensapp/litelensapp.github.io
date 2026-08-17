@@ -61,8 +61,8 @@ export const Download: FC = () => {
                 className={cn(
                   "h-12 flex-none items-center gap-2 rounded-lg text-sm font-semibold not-data-active:hover:bg-muted",
                   "data-active:bg-success data-active:text-white data-active:hover:bg-success/90 data-active:hover:text-white",
-                  "min-w-32 rounded-t-lg rounded-b-none",
-                  "md:rounded-l-lg md:rounded-r-none md:pl-4"
+                  "min-w-24 rounded-t-lg rounded-b-none",
+                  "md:min-w-32 md:rounded-l-lg md:rounded-r-none md:pl-4"
                 )}
               >
                 <platform.icon className="size-4 shrink-0" />

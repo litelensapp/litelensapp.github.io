@@ -6,14 +6,14 @@ import { Download } from "./components/download/Download"
 
 const App: FC = () => {
   return (
-    <>
+    <div className="h-dvh overflow-x-hidden">
       <Header />
       <main className="mx-auto max-w-7xl">
         <Hero />
         <Download />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }
 
