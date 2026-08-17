@@ -1,0 +1,31 @@
+User-agent: *
+Allow: /
+
+# Social / OG crawlers
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Facebot
+Allow: /
+
+# AI crawlers — explicitly allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Googlebot-Extended
+Allow: /
+
+Sitemap: https://litelensapp.github.io/sitemap.xml
+LLMs: https://litelensapp.github.io/llms.txt

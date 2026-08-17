@@ -1,0 +1,37 @@
+# Litelens
+
+> Litelens is a lightweight, native desktop app for managing Kubernetes clusters — a clean, modern, watch-based UI over your cluster, without the overhead of Electron. Free and open source for macOS and Linux.
+
+## Installation
+
+**macOS**
+- Homebrew: 
+  ```
+  brew tap litelensapp/homebrew-litelens
+  brew trust litelensapp/litelens/litelens
+  brew install litelens
+  ```
+- Manual install script: 
+  ```
+  curl -fsSL "https://raw.githubusercontent.com/litelensapp/litelens/main/scripts/install.sh" | bash
+  ```
+- Or download the Apple Silicon binary directly from the site
+
+**Linux (Ubuntu 24.04 "noble" and derivatives)**
+- apt: add the Litelens APT repository, then `sudo apt-get install litelens` (see the site for the exact commands)
+- Manual install script: same as macOS
+- Or download the amd64 binary directly from the site
+
+**Windows**
+- Prebuilt installers are not published yet — check the GitHub releases page for updates.
+
+## Key facts
+
+- Free and open source (license published on GitHub)
+- Native app, not Electron-based — lightweight and fast
+- Watch-based UI that reflects live Kubernetes cluster state
+
+## Resources
+
+- App: https://litelensapp.github.io/
+- Source & releases: https://github.com/litelensapp/litelens
