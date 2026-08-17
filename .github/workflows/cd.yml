@@ -1,0 +1,12 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish-github-pages:
+    name: Publish to GitHub Pages
+    uses: ./.github/workflows/job-publish-github-pages.yml
+    secrets: inherit

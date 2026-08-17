@@ -1,0 +1,34 @@
+@import "@litelens/design-system/styles.css";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/space-grotesk";
+
+@theme inline {
+  /* Body copy uses Inter (matches the reference design's body text); headings
+   * use Space Grotesk (free alternative to the reference's Repro) via the
+   * `font-heading` utility. */
+  --font-sans: "Inter Variable", sans-serif;
+  --font-heading: "Space Grotesk Variable", sans-serif;
+}
+
+@layer utilities {
+  /* Marketing Scale
+   * Extends @litelens/design-system's app-scale typography tokens
+   * (.text-display, .text-h1, etc.) with larger, responsive sizes for
+   * landing-page hero headlines and lead paragraphs. Use these instead of
+   * raw text-3xl/5xl utilities on marketing pages.
+   */
+  .text-hero {
+    @apply text-3xl leading-tight font-bold md:text-5xl;
+  }
+  .text-lead {
+    @apply text-base leading-relaxed font-normal md:text-lg;
+  }
+
+  /* Semantic Aliases (matches the DS's alias naming convention) */
+  .headline-hero {
+    @apply text-3xl leading-tight font-bold md:text-5xl;
+  }
+  .lead-text {
+    @apply text-base leading-relaxed font-normal md:text-lg;
+  }
+}

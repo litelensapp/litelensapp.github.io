@@ -1,2 +1,9 @@
 # litelensapp.github.io
-Landing page for Litelens
+
+The landing page for Litelens
+
+## Tech Stack
+
+- React 19 + TypeScript
+- Vite
+- Tailwind CSS v4
