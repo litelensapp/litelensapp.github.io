@@ -39,7 +39,7 @@ export const Download: FC = () => {
   const isDesktop = useBreakpoint("md")
   return (
     <Section paddingBotton>
-      <h1 className="text-hero mb-2 font-heading text-foreground">Installation</h1>
+      <h2 className="text-hero mb-2 font-heading text-foreground">Installation</h2>
       <p className="text-lead mb-8 text-muted-foreground">Choose your platform</p>
 
       <Tabs
