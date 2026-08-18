@@ -138,8 +138,14 @@ var Header = () => {
 	});
 };
 //#endregion
+//#region src/assets/hero-demo-poster.jpg
+var hero_demo_poster_default = "/assets/hero-demo-poster-CqoKjYAT.jpg";
+//#endregion
+//#region src/assets/hero-demo.webm
+var hero_demo_default$1 = "/assets/hero-demo-CeHDyPlh.webm";
+//#endregion
 //#region src/assets/hero-demo.mp4
-var hero_demo_default = "/assets/hero-demo-McwMSW6O.mp4";
+var hero_demo_default = "/assets/hero-demo-D84zvc-X.mp4";
 //#endregion
 //#region src/hooks/data-access/useGetGithubLicense.ts
 var useGetGithubLicense = () => {
@@ -203,13 +209,21 @@ var Hero = () => {
 			/* @__PURE__ */ jsx(GithubLicenseBadge, {})
 		] }), /* @__PURE__ */ jsx("div", {
 			className: "overflow-hidden rounded-xl border border-border bg-muted shadow-md",
-			children: /* @__PURE__ */ jsx("video", {
-				src: hero_demo_default,
+			children: /* @__PURE__ */ jsxs("video", {
+				poster: hero_demo_poster_default,
+				preload: "metadata",
 				autoPlay: true,
 				muted: true,
 				loop: true,
 				playsInline: true,
-				className: "h-auto w-full object-cover"
+				className: "h-auto w-full object-cover",
+				children: [/* @__PURE__ */ jsx("source", {
+					src: hero_demo_default$1,
+					type: "video/webm"
+				}), /* @__PURE__ */ jsx("source", {
+					src: hero_demo_default,
+					type: "video/mp4"
+				})]
 			})
 		})]
 	}) });
