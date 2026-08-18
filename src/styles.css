@@ -1,14 +1,4 @@
 @import "@litelens/design-system/styles.css";
-@import "@fontsource-variable/inter";
-@import "@fontsource-variable/space-grotesk";
-
-@theme inline {
-  /* Body copy uses Inter (matches the reference design's body text); headings
-   * use Space Grotesk (free alternative to the reference's Repro) via the
-   * `font-heading` utility. */
-  --font-sans: "Inter Variable", sans-serif;
-  --font-heading: "Space Grotesk Variable", sans-serif;
-}
 
 @layer utilities {
   /* Marketing Scale

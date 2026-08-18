@@ -10,7 +10,7 @@ Repo: <https://github.com/litelensapp/litelens> (`design-system` directory).
 
 ## Setup (already wired up)
 
-`src/index.css` imports the design system's stylesheet once, which pulls in Tailwind's base layer, `tw-animate-css`, the shadcn theme, the Geist Variable font, and all design tokens:
+`src/styles.css` imports the design system's stylesheet once, which pulls in Tailwind's base layer, `tw-animate-css`, the shadcn theme, the Inter Variable (`--font-sans`) and Space Grotesk Variable (`--font-heading`) fonts, and all design tokens:
 
 ```css
 @import "@litelens/design-system/styles.css";
