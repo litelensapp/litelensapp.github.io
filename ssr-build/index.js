@@ -186,8 +186,9 @@ var GithubLicenseBadge = () => {
 };
 //#endregion
 //#region src/components/Section.tsx
-var Section = ({ children, paddingBotton }) => {
+var Section = ({ children, paddingBotton, id }) => {
 	return /* @__PURE__ */ jsx("section", {
+		id,
 		className: cn("bg-background px-6 py-4 md:pt-16", paddingBotton && "md:pb-16"),
 		children
 	});
@@ -412,6 +413,7 @@ var Download = () => {
 	const isDesktop = useBreakpoint("md");
 	return /* @__PURE__ */ jsxs(Section, {
 		paddingBotton: true,
+		id: "installation",
 		children: [
 			/* @__PURE__ */ jsx("h2", {
 				className: "text-hero mb-2 font-heading text-foreground",
