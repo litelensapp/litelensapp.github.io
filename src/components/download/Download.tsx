@@ -38,7 +38,7 @@ const PLATFORM_TABS: { value: PlatformType; label: string; icon: FC<SVGProps<SVG
 export const Download: FC = () => {
   const isDesktop = useBreakpoint("md")
   return (
-    <Section paddingBotton>
+    <Section paddingBotton id="installation">
       <h2 className="text-hero mb-2 font-heading text-foreground">Installation</h2>
       <p className="text-lead mb-8 text-muted-foreground">Choose your platform</p>
 
