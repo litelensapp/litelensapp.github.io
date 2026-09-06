@@ -6,9 +6,9 @@ import { Download } from "./components/download/Download"
 
 const App: FC = () => {
   return (
-    <div className="h-dvh overflow-x-hidden">
+    <div className="flex min-h-dvh flex-col overflow-x-clip">
       <Header />
-      <main className="mx-auto max-w-7xl">
+      <main className="mx-auto w-full max-w-7xl flex-1">
         <Hero />
         <Download />
       </main>
