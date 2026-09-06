@@ -1,16 +1,10 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
-import { StrictMode } from "react"
-import { hydrateRoot } from "react-dom/client"
+import { createRoot, hydrateRoot } from "react-dom/client"
 import "./styles.css"
-import App from "./App.tsx"
+import { tree } from "./tree.tsx"
 
-const queryClient = new QueryClient()
+const root = document.getElementById("root")!
 
-hydrateRoot(
-  document.getElementById("root")!,
-  <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <App />
-    </QueryClientProvider>
-  </StrictMode>
-)
+// Prod builds ship prerendered markup (see plugins/ssg); dev serves an empty
+// #root, so there's nothing to hydrate against.
+if (root.hasChildNodes()) hydrateRoot(root, tree)
+else createRoot(root).render(tree)

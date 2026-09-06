@@ -16,7 +16,7 @@ export const AuthorModal: FC = () => {
       <DialogTrigger>
         <span className="cursor-pointer text-white italic hover:text-white/80">@gknguyen</span>
       </DialogTrigger>
-      <DialogContent size="md" showCloseButton>
+      <DialogContent size="md" showCloseButton={false}>
         <DialogHeader>
           <DialogTitle>Hey there! 👋</DialogTitle>
           <DialogDescription>Buy me a coffee if you love this project ❤️</DialogDescription>

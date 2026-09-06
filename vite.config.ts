@@ -1,9 +1,9 @@
 import { defineConfig, loadEnv } from "vite"
 import react from "@vitejs/plugin-react"
 import tailwindcss from "@tailwindcss/vite"
-import { seoFiles } from "./plugins/seo.ts"
-import { aeoFiles } from "./plugins/aeo.ts"
-import { ssgPlugin } from "./plugins/ssg.ts"
+import { seoPlugin } from "./plugins/seo/index.ts"
+import { aeoPlugin } from "./plugins/aeo/index.ts"
+import { ssgPlugin } from "./plugins/ssg/index.ts"
 
 // https://vite.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -13,19 +13,19 @@ export default defineConfig(({ command, mode }) => {
     plugins: [
       react(),
       tailwindcss(),
-      seoFiles({
+      seoPlugin({
         siteUrl: env.VITE_APP_SITE_URL,
         name: env.VITE_APP_NAME,
         title: env.VITE_APP_TITLE,
         description: env.VITE_APP_DESCRIPTION,
       }),
-      aeoFiles({
+      aeoPlugin({
         siteUrl: env.VITE_APP_SITE_URL,
         name: env.VITE_APP_NAME,
         description: env.VITE_APP_DESCRIPTION,
       }),
       ssgPlugin({
-        entry: "./src/server/index.tsx",
+        entry: "./src/entry-server.tsx",
         routes: ["/"],
       }),
     ],

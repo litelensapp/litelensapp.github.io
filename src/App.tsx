@@ -4,7 +4,7 @@ import { Header } from "./components/Header"
 import { Hero } from "./components/Hero"
 import { Download } from "./components/download/Download"
 
-const App: FC = () => {
+export const App: FC = () => {
   return (
     <div className="flex min-h-dvh flex-col overflow-x-clip">
       <Header />
@@ -16,5 +16,3 @@ const App: FC = () => {
     </div>
   )
 }
-
-export default App
