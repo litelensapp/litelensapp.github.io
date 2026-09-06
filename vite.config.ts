@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react"
 import tailwindcss from "@tailwindcss/vite"
 import { seoFiles } from "./plugins/seo.ts"
 import { aeoFiles } from "./plugins/aeo.ts"
+import { ssgPlugin } from "./plugins/ssg.ts"
 
 // https://vite.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -22,6 +23,10 @@ export default defineConfig(({ command, mode }) => {
         siteUrl: env.VITE_APP_SITE_URL,
         name: env.VITE_APP_NAME,
         description: env.VITE_APP_DESCRIPTION,
+      }),
+      ssgPlugin({
+        entry: "./src/server/index.tsx",
+        routes: ["/"],
       }),
     ],
   }

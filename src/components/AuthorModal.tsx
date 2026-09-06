@@ -26,7 +26,7 @@ export const AuthorModal: FC = () => {
           <div className="flex flex-col gap-4 sm:flex-row sm:gap-8">
             <div className="flex flex-col items-center">
               <img
-                src={`${AUTHOR_URL}/assets/payments/momo.jpg`}
+                src={`${AUTHOR_URL}/payments/momo.jpg`}
                 alt="MOMO payment QR code"
                 className="h-40 w-40 sm:h-50 sm:w-50"
               />
@@ -37,7 +37,7 @@ export const AuthorModal: FC = () => {
 
             <div className="flex flex-col items-center">
               <img
-                src={`${AUTHOR_URL}/assets/payments/paypal.jpeg`}
+                src={`${AUTHOR_URL}/payments/paypal.jpeg`}
                 alt="PayPal payment QR code"
                 className="h-40 w-40 sm:h-50 sm:w-50"
               />
