@@ -2,6 +2,7 @@ import type { FC } from "react"
 import { Footer } from "./components/Footer"
 import { Header } from "./components/Header"
 import { Hero } from "./components/Hero"
+import { Prerequisite } from "./components/Prerequisite"
 import { Download } from "./components/download/Download"
 
 export const App: FC = () => {
@@ -10,6 +11,7 @@ export const App: FC = () => {
       <Header />
       <main className="mx-auto w-full max-w-7xl flex-1">
         <Hero />
+        <Prerequisite />
         <Download />
       </main>
       <Footer />
