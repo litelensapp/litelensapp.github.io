@@ -1,6 +1,9 @@
 import { renderToString } from "react-dom/server"
-import { tree } from "./tree.tsx"
+import { createAppRouter } from "./router.tsx"
+import { createTree } from "./tree.tsx"
 
-export function render(): string {
-  return renderToString(tree)
+export async function render(url: string): Promise<string> {
+  const router = createAppRouter(url)
+  await router.load()
+  return renderToString(createTree(router))
 }

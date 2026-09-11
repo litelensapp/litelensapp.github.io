@@ -16,14 +16,16 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@litelens/design-system": "^1.6.5",
+    "@litelens/design-system": "^1.9.0",
     "@tailwindcss/vite": "^4.3.3",
     "@tanstack/react-query": "^5.101.4",
+    "@tanstack/react-router": "^1.170.35",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
+    "@tanstack/router-plugin": "^1.168.37",
     "@types/node": "^26.2.0",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",

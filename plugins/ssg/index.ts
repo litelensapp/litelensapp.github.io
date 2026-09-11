@@ -47,13 +47,13 @@ export function ssgPlugin({ entry, routes }: SsgOptions): Plugin {
 
       const entryFileName = `${basename(entry).replace(/\.[tj]sx?$/, "")}.js`
       const { render } = (await import(pathToFileURL(resolve(ssrOutDir, entryFileName)).href)) as {
-        render: (url: string) => string
+        render: (url: string) => string | Promise<string>
       }
 
       const template = readFileSync(resolve(outDir, "index.html"), "utf-8")
 
       for (const route of routes) {
-        const appHtml = render(route)
+        const appHtml = await render(route)
         const html = template.replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`)
         const routeDir = resolve(outDir, route.replace(/^\//, ""))
         mkdirSync(routeDir, { recursive: true })

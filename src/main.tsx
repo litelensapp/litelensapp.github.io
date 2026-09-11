@@ -1,6 +1,11 @@
 import { createRoot, hydrateRoot } from "react-dom/client"
 import "./styles.css"
-import { tree } from "./tree.tsx"
+import { createAppRouter } from "./router.tsx"
+import { createTree } from "./tree.tsx"
+
+const router = createAppRouter()
+await router.load()
+const tree = createTree(router)
 
 const root = document.getElementById("root")!
 

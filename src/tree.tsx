@@ -1,12 +1,15 @@
 import { QueryClientProvider } from "@tanstack/react-query"
+import { RouterProvider } from "@tanstack/react-router"
 import { StrictMode } from "react"
-import { App } from "./App.tsx"
 import { queryClient } from "./api/client.ts"
+import type { AppRouter } from "./router.tsx"
 
-export const tree = (
-  <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <App />
-    </QueryClientProvider>
-  </StrictMode>
-)
+export function createTree(router: AppRouter) {
+  return (
+    <StrictMode>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    </StrictMode>
+  )
+}
