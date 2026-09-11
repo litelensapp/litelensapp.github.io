@@ -24,7 +24,7 @@ export const Workload: FC = () => {
           <video
             poster={workloadsDemoPoster}
             preload="metadata"
-            autoPlay
+            controls
             muted
             loop
             playsInline
