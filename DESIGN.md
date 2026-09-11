@@ -49,7 +49,7 @@ Prefer importing from `./atoms` or `./components` directly over the root barrel 
 
 - Use typography utilities instead of ad hoc `text-*`/`font-*` combinations — they preserve the semantic scale. The design system's `styles.typography.css` defines the app scale (`.text-display`, `.text-h1`, `.text-h2`, `.text-h3`, `.text-body`, `.text-caption`, `.text-label`); this project's own `src/styles.css` extends it with a larger marketing scale for landing-page copy (`.text-hero`, `.text-lead`) — see that file's "Marketing Scale" comment before adding another one-off size.
 - Match the HTML heading tag to the utility tier: page title → `<h1 className="text-hero">`, section title → `<h2 className="text-h2">`, subsection title → `<h3 className="text-h3">`, and so on. The design system currently only defines `text-h1`–`text-h3` (no `text-h4`+) — if a component needs a fourth nesting level, ask whether the content should be restructured before reaching for raw `text-sm font-semibold` as a workaround.
-- Example (see `src/components/download/`): `Download`'s `<h1 className="text-hero">Installation</h1>` is the page-level title, `LinuxContent`'s `<h2 className="text-h2">Ubuntu</h2>` is a platform section, and its nested `<h3 className="text-h3">apt</h3>` / `<h3 className="text-h3">Manual</h3>` are subsections.
+- Example (see `src/pages/download/`): `Download`'s `<h1 className="text-hero">Installation</h1>` is the page-level title, `LinuxContent`'s `<h2 className="text-h2">Ubuntu</h2>` is a platform section, and its nested `<h3 className="text-h3">apt</h3>` / `<h3 className="text-h3">Manual</h3>` are subsections.
 
 ## Theming
 

@@ -22,7 +22,7 @@ See [CLAUDE.md](./CLAUDE.md) for an architecture overview and [DESIGN.md](./DESI
 
 - `src/main.tsx` — entry point, mounts `src/App.tsx`.
 - `src/App.tsx` — currently holds the full page.
-- `src/components/` — where new UI should be broken out into as the page grows.
+- `src/pages/` — where new UI should be broken out into as the page grows.
 
 Components are typed arrow function expressions, not function declarations:
 

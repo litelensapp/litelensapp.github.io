@@ -1,9 +1,9 @@
 import type { FC } from "react"
-import { Footer } from "./components/Footer"
-import { Header } from "./components/Header"
-import { Hero } from "./components/Hero"
-import { Prerequisite } from "./components/Prerequisite"
-import { Download } from "./components/download/Download"
+import { Footer } from "./layouts/footer/Footer"
+import { Header } from "./layouts/header/Header"
+import { Hero } from "./pages/home/Hero"
+import { Prerequisite } from "./pages/home/Prerequisite"
+import { Download } from "./pages/home/download/Download"
 
 export const App: FC = () => {
   return (

@@ -1,7 +1,7 @@
 import type { FC } from "react"
-import heroDemoPoster from "../assets/hero-demo-poster.jpg"
-import heroDemoWebm from "../assets/hero-demo.webm"
-import heroDemoMp4 from "../assets/hero-demo.mp4"
+import heroDemoPoster from "../../assets/hero-demo-poster.jpg"
+import heroDemoWebm from "../../assets/hero-demo.webm"
+import heroDemoMp4 from "../../assets/hero-demo.mp4"
 import { GithubLicenseBadge } from "./badges/GithubLicenseBadge"
 import { Section } from "./Section"
 

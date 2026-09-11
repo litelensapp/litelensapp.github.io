@@ -1,7 +1,7 @@
 import { cn } from "@litelens/design-system/utils"
 import { useEffect, useState, type FC } from "react"
-import logo from "../assets/logo-transparent.png"
-import { GithubReleaseBadge } from "./badges/GithubReleaseBadge"
+import logo from "../../assets/logo-transparent.png"
+import { GithubReleaseBadge } from "../../pages/home/badges/GithubReleaseBadge"
 
 export const Header: FC = () => {
   const [scrolled, setScrolled] = useState(false)
