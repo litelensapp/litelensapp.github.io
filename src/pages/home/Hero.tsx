@@ -1,7 +1,5 @@
 import type { FC } from "react"
-import heroDemoPoster from "../../assets/home/hero/hero-demo-poster.jpg"
-import heroDemoWebm from "../../assets/home/hero/hero-demo.webm"
-import heroDemoMp4 from "../../assets/home/hero/hero-demo.mp4"
+import heroDemo from "../../assets/home/hero/hero-demo.png"
 import { GithubLicenseBadge } from "./badges/GithubLicenseBadge"
 import { Section } from "./Section"
 
@@ -23,18 +21,7 @@ export const Hero: FC = () => {
 
         {/* Right Column */}
         <div className="overflow-hidden rounded-xl border border-border bg-muted shadow-md">
-          <video
-            poster={heroDemoPoster}
-            preload="metadata"
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="h-auto w-full object-cover"
-          >
-            <source src={heroDemoWebm} type="video/webm" />
-            <source src={heroDemoMp4} type="video/mp4" />
-          </video>
+          <img src={heroDemo} alt="Litelens dashboard" className="h-auto w-full object-cover" />
         </div>
       </div>
     </Section>
