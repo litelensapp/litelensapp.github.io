@@ -50,6 +50,7 @@ export default defineConfig(({ mode }) => {
         siteUrl: env.VITE_APP_SITE_URL,
         name: env.VITE_APP_NAME,
         description: env.VITE_APP_DESCRIPTION,
+        pages,
       }),
       ssgPlugin({
         entry: "./src/entry-server.tsx",

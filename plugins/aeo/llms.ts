@@ -1,11 +1,15 @@
+import type { PageMeta } from "../seo/pages.ts"
+
 export interface LlmsConfig {
   siteUrl: string
   name: string
   description: string
+  pages: PageMeta[]
 }
 
 export function buildLlmsTxt(config: LlmsConfig): string {
   const normalizedSiteUrl = config.siteUrl?.replace(/\/+$/, "") ?? ""
+  const featurePages = config.pages.filter((page) => page.path !== "/")
 
   return [
     `# ${config.name}`,
@@ -41,6 +45,13 @@ export function buildLlmsTxt(config: LlmsConfig): string {
     `- Native app, not Electron-based — lightweight and fast`,
     `- Watch-based UI that reflects live Kubernetes cluster state`,
     ``,
+    `## Features`,
+    ``,
+    ...featurePages.flatMap((page) => [
+      `**${page.breadcrumbLabel ?? page.title}** (${normalizedSiteUrl}${page.path})`,
+      `- ${page.description}`,
+      ``,
+    ]),
     `## Resources`,
     ``,
     `- App: ${normalizedSiteUrl}/`,

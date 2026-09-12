@@ -1,4 +1,5 @@
 import type { Plugin } from "vite"
+import type { PageMeta } from "../seo/pages.ts"
 import { buildRobotsTxt } from "./robots.ts"
 import { buildLlmsTxt } from "./llms.ts"
 
@@ -6,6 +7,7 @@ interface AeoConfig {
   siteUrl: string
   name: string
   description: string
+  pages: PageMeta[]
 }
 
 export function aeoPlugin(config: AeoConfig): Plugin {
