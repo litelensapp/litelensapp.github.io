@@ -14,6 +14,8 @@ export const Workload: FC = () => {
       poster={workloadsDemoPoster}
       webmSrc={workloadsDemoWebm}
       mp4Src={workloadsDemoMp4}
+      width={1600}
+      height={1046}
     />
   )
 }

@@ -12,6 +12,8 @@ export const NamespaceFilter: FC = () => {
       poster={namespaceFilterDemoPoster}
       webmSrc={namespaceFilterDemoWebm}
       mp4Src={namespaceFilterDemoMp4}
+      width={1600}
+      height={1046}
     />
   )
 }

@@ -17,6 +17,8 @@ export const PluginsPage: FC = () => {
         <ImageWithSkeleton
           src={pluginsHero}
           alt="Litelens plugins"
+          width={3024}
+          height={1899}
           className="h-auto w-full object-cover"
         />
       </div>

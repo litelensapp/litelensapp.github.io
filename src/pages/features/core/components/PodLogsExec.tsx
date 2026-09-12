@@ -12,6 +12,8 @@ export const PodLogsExec: FC = () => {
       poster={podLogsDemoPoster}
       webmSrc={podLogsDemoWebm}
       mp4Src={podLogsDemoMp4}
+      width={1600}
+      height={1046}
     />
   )
 }

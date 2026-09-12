@@ -25,6 +25,8 @@ export const Hero: FC = () => {
           <ImageWithSkeleton
             src={heroDemo}
             alt="Litelens dashboard"
+            width={3024}
+            height={1898}
             className="h-auto w-full object-cover"
           />
         </div>

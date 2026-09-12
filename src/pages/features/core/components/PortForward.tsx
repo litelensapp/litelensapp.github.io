@@ -13,6 +13,8 @@ export const PortForward: FC = () => {
       poster={portForwardDemoPoster}
       webmSrc={portForwardDemoWebm}
       mp4Src={portForwardDemoMp4}
+      width={1600}
+      height={1040}
     />
   )
 }
