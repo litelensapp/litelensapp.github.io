@@ -1,5 +1,6 @@
 import type { FC } from "react"
 import pluginsHero from "../../../assets/features/plugins/plugins-hero.png"
+import { ImageWithSkeleton } from "../../../components/media/ImageWithSkeleton"
 
 export const Plugins: FC = () => {
   return (
@@ -13,7 +14,11 @@ export const Plugins: FC = () => {
       </div>
 
       <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-xl border border-border shadow-xl transition-transform duration-300 hover:scale-105">
-        <img src={pluginsHero} alt="Litelens plugins" className="h-auto w-full object-cover" />
+        <ImageWithSkeleton
+          src={pluginsHero}
+          alt="Litelens plugins"
+          className="h-auto w-full object-cover"
+        />
       </div>
 
       <p className="text-lead mx-auto mt-6 max-w-2xl text-center text-muted-foreground">

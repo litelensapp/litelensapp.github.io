@@ -2,6 +2,7 @@ import type { FC } from "react"
 import workloadsDemoPoster from "../../../assets/features/core/workloads-demo/workloads-demo-poster.jpg"
 import workloadsDemoWebm from "../../../assets/features/core/workloads-demo/workloads-demo.webm"
 import workloadsDemoMp4 from "../../../assets/features/core/workloads-demo/workloads-demo.mp4"
+import { VideoWithSkeleton } from "../../../components/media/VideoWithSkeleton"
 
 export const Workload: FC = () => {
   return (
@@ -21,7 +22,7 @@ export const Workload: FC = () => {
 
         {/* Right Column */}
         <div className="overflow-hidden rounded-xl border border-border bg-muted shadow-md">
-          <video
+          <VideoWithSkeleton
             poster={workloadsDemoPoster}
             preload="metadata"
             controls
@@ -32,7 +33,7 @@ export const Workload: FC = () => {
           >
             <source src={workloadsDemoWebm} type="video/webm" />
             <source src={workloadsDemoMp4} type="video/mp4" />
-          </video>
+          </VideoWithSkeleton>
         </div>
       </div>
     </section>

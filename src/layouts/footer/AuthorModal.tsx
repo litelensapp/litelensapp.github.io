@@ -7,6 +7,7 @@ import {
   DialogDescription,
 } from "@litelens/design-system/atoms"
 import type { FC } from "react"
+import { ImageWithSkeleton } from "../../components/media/ImageWithSkeleton"
 
 const AUTHOR_URL = import.meta.env.VITE_APP_AUTHOR_URL
 
@@ -25,7 +26,7 @@ export const AuthorModal: FC = () => {
         <div className="text-body flex flex-col gap-3">
           <div className="flex flex-col gap-4 sm:flex-row sm:gap-8">
             <div className="flex flex-col items-center">
-              <img
+              <ImageWithSkeleton
                 src={`${AUTHOR_URL}/payments/momo.jpg`}
                 alt="MOMO payment QR code"
                 className="h-40 w-40 sm:h-50 sm:w-50"
@@ -36,7 +37,7 @@ export const AuthorModal: FC = () => {
             </div>
 
             <div className="flex flex-col items-center">
-              <img
+              <ImageWithSkeleton
                 src={`${AUTHOR_URL}/payments/paypal.jpeg`}
                 alt="PayPal payment QR code"
                 className="h-40 w-40 sm:h-50 sm:w-50"

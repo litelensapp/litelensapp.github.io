@@ -1,5 +1,6 @@
 import type { FC } from "react"
 import heroDemo from "../../assets/home/hero/hero-demo.png"
+import { ImageWithSkeleton } from "../../components/media/ImageWithSkeleton"
 import { GithubLicenseBadge } from "./badges/GithubLicenseBadge"
 import { Section } from "./Section"
 
@@ -21,7 +22,11 @@ export const Hero: FC = () => {
 
         {/* Right Column */}
         <div className="overflow-hidden rounded-xl border border-border bg-muted shadow-xl transition-transform duration-300 hover:scale-105">
-          <img src={heroDemo} alt="Litelens dashboard" className="h-auto w-full object-cover" />
+          <ImageWithSkeleton
+            src={heroDemo}
+            alt="Litelens dashboard"
+            className="h-auto w-full object-cover"
+          />
         </div>
       </div>
     </Section>

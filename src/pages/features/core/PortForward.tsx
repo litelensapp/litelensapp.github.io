@@ -2,6 +2,7 @@ import type { FC } from "react"
 import portForwardDemoPoster from "../../../assets/features/core/port-forward-demo/port-forward-demo-poster.jpg"
 import portForwardDemoWebm from "../../../assets/features/core/port-forward-demo/port-forward-demo.webm"
 import portForwardDemoMp4 from "../../../assets/features/core/port-forward-demo/port-forward-demo.mp4"
+import { VideoWithSkeleton } from "../../../components/media/VideoWithSkeleton"
 
 export const PortForward: FC = () => {
   return (
@@ -20,7 +21,7 @@ export const PortForward: FC = () => {
 
         {/* Right Column */}
         <div className="overflow-hidden rounded-xl border border-border bg-muted shadow-md">
-          <video
+          <VideoWithSkeleton
             poster={portForwardDemoPoster}
             preload="metadata"
             controls
@@ -31,7 +32,7 @@ export const PortForward: FC = () => {
           >
             <source src={portForwardDemoWebm} type="video/webm" />
             <source src={portForwardDemoMp4} type="video/mp4" />
-          </video>
+          </VideoWithSkeleton>
         </div>
       </div>
     </section>

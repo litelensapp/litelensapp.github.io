@@ -2,6 +2,7 @@ import type { FC } from "react"
 import namespaceFilterDemoPoster from "../../../assets/features/core/namespace-filter-demo/namespace-filter-demo-poster.jpg"
 import namespaceFilterDemoMp4 from "../../../assets/features/core/namespace-filter-demo/namespace-filter-demo.mp4"
 import namespaceFilterDemoWebm from "../../../assets/features/core/namespace-filter-demo/namespace-filter-demo.webm"
+import { VideoWithSkeleton } from "../../../components/media/VideoWithSkeleton"
 
 export const NamespaceFilter: FC = () => {
   return (
@@ -9,7 +10,7 @@ export const NamespaceFilter: FC = () => {
       <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[3fr_2fr] md:gap-12">
         {/* Left Column */}
         <div className="order-2 overflow-hidden rounded-xl border border-border bg-muted shadow-md md:order-0">
-          <video
+          <VideoWithSkeleton
             poster={namespaceFilterDemoPoster}
             preload="metadata"
             controls
@@ -20,7 +21,7 @@ export const NamespaceFilter: FC = () => {
           >
             <source src={namespaceFilterDemoWebm} type="video/webm" />
             <source src={namespaceFilterDemoMp4} type="video/mp4" />
-          </video>
+          </VideoWithSkeleton>
         </div>
 
         {/* Right Column */}

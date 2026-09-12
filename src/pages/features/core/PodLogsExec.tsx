@@ -2,6 +2,7 @@ import type { FC } from "react"
 import podLogsDemoPoster from "../../../assets/features/core/pod-logs-demo/pod-logs-demo-poster.jpg"
 import podLogsDemoWebm from "../../../assets/features/core/pod-logs-demo/pod-logs-demo.webm"
 import podLogsDemoMp4 from "../../../assets/features/core/pod-logs-demo/pod-logs-demo.mp4"
+import { VideoWithSkeleton } from "../../../components/media/VideoWithSkeleton"
 
 export const PodLogsExec: FC = () => {
   return (
@@ -9,7 +10,7 @@ export const PodLogsExec: FC = () => {
       <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[3fr_2fr] md:gap-12">
         {/* Left Column */}
         <div className="order-2 overflow-hidden rounded-xl border border-border bg-muted shadow-md md:order-0">
-          <video
+          <VideoWithSkeleton
             poster={podLogsDemoPoster}
             preload="metadata"
             controls
@@ -20,7 +21,7 @@ export const PodLogsExec: FC = () => {
           >
             <source src={podLogsDemoWebm} type="video/webm" />
             <source src={podLogsDemoMp4} type="video/mp4" />
-          </video>
+          </VideoWithSkeleton>
         </div>
 
         {/* Right Column */}
