@@ -3,21 +3,67 @@ import { basename, resolve } from "node:path"
 import { pathToFileURL } from "node:url"
 import type { Plugin, ResolvedConfig } from "vite"
 import { build as viteBuild } from "vite"
+import { SCHEMA_MARKER_END, SCHEMA_MARKER_START } from "../seo/index.ts"
+import type { PageMeta } from "../seo/pages.ts"
+import { buildSchemaTags } from "../seo/schema.ts"
 
 interface SsgOptions {
   /** SSR entry module exporting a `render(url: string): string` function. */
   entry: string
-  /** Routes to prerender, e.g. ['/v1', '/v2']. Each becomes `<outDir><route>/index.html`. */
-  routes: string[]
+  siteUrl: string
+  name: string
+  /** Pages to prerender. Each becomes `<outDir><path>/index.html`. */
+  pages: PageMeta[]
+}
+
+function escapeHtml(value: string): string {
+  return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+}
+
+function escapeAttr(value: string): string {
+  return escapeHtml(value).replace(/"/g, "&quot;")
+}
+
+function replaceAttr(html: string, matchAttr: RegExp, value: string): string {
+  return html.replace(matchAttr, `$1${escapeAttr(value)}$2`)
+}
+
+/** Rewrites the per-page head tags (title, description, canonical, OG/Twitter, JSON-LD) that
+ * `seoPlugin` stamped onto the built `index.html` with the ones for `page` — every prerendered
+ * route otherwise inherits the homepage's head as-is, since only the `<div id="root">` body
+ * differs between routes. */
+function applyPageHead(template: string, siteUrl: string, name: string, page: PageMeta): string {
+  const normalizedSiteUrl = siteUrl?.replace(/\/+$/, "") ?? ""
+  const pageUrl = page.path === "/" ? `${normalizedSiteUrl}/` : `${normalizedSiteUrl}${page.path}`
+
+  let html = template
+  html = html.replace(/<title>.*<\/title>/, `<title>${escapeHtml(page.title)}</title>`)
+  html = replaceAttr(html, /(<meta name="description" content=")[^"]*(")/, page.description)
+  html = replaceAttr(html, /(<link rel="canonical" href=")[^"]*(")/, pageUrl)
+  html = replaceAttr(html, /(property="og:url" content=")[^"]*(")/, pageUrl)
+  html = replaceAttr(html, /(property="og:title" content=")[^"]*(")/, page.title)
+  html = replaceAttr(html, /(property="og:description" content=")[^"]*(")/, page.description)
+  html = replaceAttr(html, /(name="twitter:url" content=")[^"]*(")/, pageUrl)
+  html = replaceAttr(html, /(name="twitter:title" content=")[^"]*(")/, page.title)
+  html = replaceAttr(html, /(name="twitter:description" content=")[^"]*(")/, page.description)
+
+  const schemaTags = buildSchemaTags({ siteUrl, name, description: page.description, page })
+  html = html.replace(
+    new RegExp(`${SCHEMA_MARKER_START}[\\s\\S]*?${SCHEMA_MARKER_END}`),
+    `${SCHEMA_MARKER_START}\n  ${schemaTags}\n  ${SCHEMA_MARKER_END}`
+  )
+
+  return html
 }
 
 /**
- * Prerenders `routes` to static `index.html` files after the client build finishes, by
+ * Prerenders `pages` to static `index.html` files after the client build finishes, by
  * running a second SSR build of `entry` and rendering each route with `renderToString`.
  * Gives each route a real static file so it doesn't depend on client-side routing or a
- * CDN/server SPA fallback to serve it.
+ * CDN/server SPA fallback to serve it, and stamps each with its own title/description/
+ * canonical/OG/JSON-LD instead of inheriting the homepage's.
  */
-export function ssgPlugin({ entry, routes }: SsgOptions): Plugin {
+export function ssgPlugin({ entry, siteUrl, name, pages }: SsgOptions): Plugin {
   let config: ResolvedConfig
 
   return {
@@ -52,10 +98,15 @@ export function ssgPlugin({ entry, routes }: SsgOptions): Plugin {
 
       const template = readFileSync(resolve(outDir, "index.html"), "utf-8")
 
-      for (const route of routes) {
-        const appHtml = await render(route)
-        const html = template.replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`)
-        const routeDir = resolve(outDir, route.replace(/^\//, ""))
+      for (const page of pages) {
+        const appHtml = await render(page.path)
+        const withBody = template.replace(
+          '<div id="root"></div>',
+          `<div id="root">${appHtml}</div>`
+        )
+        const html = page.path === "/" ? withBody : applyPageHead(withBody, siteUrl, name, page)
+
+        const routeDir = resolve(outDir, page.path.replace(/^\//, ""))
         mkdirSync(routeDir, { recursive: true })
         writeFileSync(resolve(routeDir, "index.html"), html)
       }

@@ -1,14 +1,20 @@
+import type { PageMeta } from "./pages.ts"
+
 export interface SchemaConfig {
   siteUrl: string
   name: string
   description: string
+  page: PageMeta
 }
 
 export function buildSchemaTags(config: SchemaConfig): string {
   const normalizedSiteUrl = config.siteUrl?.replace(/\/+$/, "") ?? ""
+  const isHome = config.page.path === "/"
 
-  const schemas = [
-    {
+  const schemas: object[] = []
+
+  if (isHome) {
+    schemas.push({
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       "@id": `${normalizedSiteUrl}/#software`,
@@ -30,20 +36,27 @@ export function buildSchemaTags(config: SchemaConfig): string {
         "Install via Homebrew on macOS",
         "Install via apt on Ubuntu",
       ],
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: `${normalizedSiteUrl}/`,
-        },
-      ],
-    },
+    })
+  }
+
+  const breadcrumbItems: object[] = [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${normalizedSiteUrl}/` },
   ]
+
+  if (!isHome && config.page.breadcrumbLabel) {
+    breadcrumbItems.push({
+      "@type": "ListItem",
+      position: 2,
+      name: config.page.breadcrumbLabel,
+      item: `${normalizedSiteUrl}${config.page.path}`,
+    })
+  }
+
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: breadcrumbItems,
+  })
 
   return schemas
     .map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`)

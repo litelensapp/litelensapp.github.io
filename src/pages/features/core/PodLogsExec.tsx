@@ -25,9 +25,9 @@ export const PodLogsExec: FC = () => {
 
         {/* Right Column */}
         <div className="order-1 md:order-0">
-          <h1 className="text-hero mb-4 font-heading text-success">
+          <h2 className="text-hero mb-4 font-heading text-success">
             Stream pod logs and exec straight into a terminal.
-          </h1>
+          </h2>
           <p className="text-lead max-w-lg text-muted-foreground">
             Tail live logs for any pod without leaving the app, then jump into an interactive exec
             session in the same terminal view — no context switching to kubectl required.

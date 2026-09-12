@@ -1,13 +1,17 @@
 import type { Plugin } from "vite"
+import type { PageMeta } from "./pages.ts"
 import { buildSchemaTags } from "./schema.ts"
 import { buildSitemap } from "./sitemap.ts"
 
 interface SeoConfig {
   siteUrl: string
   name: string
-  title: string
   description: string
+  pages: PageMeta[]
 }
+
+export const SCHEMA_MARKER_START = "<!-- seo:schema:start -->"
+export const SCHEMA_MARKER_END = "<!-- seo:schema:end -->"
 
 export function seoPlugin(config: SeoConfig): Plugin {
   return {
@@ -15,8 +19,19 @@ export function seoPlugin(config: SeoConfig): Plugin {
     apply: "build",
 
     transformIndexHtml(html: string) {
-      const tags = buildSchemaTags(config)
-      return html.replace("</head>", `  ${tags}\n  </head>`)
+      const homePage = config.pages.find((page) => page.path === "/")
+      if (!homePage) return html
+
+      const tags = buildSchemaTags({
+        siteUrl: config.siteUrl,
+        name: config.name,
+        description: config.description,
+        page: homePage,
+      })
+      return html.replace(
+        "</head>",
+        `  ${SCHEMA_MARKER_START}\n  ${tags}\n  ${SCHEMA_MARKER_END}\n  </head>`
+      )
     },
 
     generateBundle() {
@@ -28,7 +43,7 @@ export function seoPlugin(config: SeoConfig): Plugin {
       this.emitFile({
         type: "asset",
         fileName: "sitemap.xml",
-        source: buildSitemap(config),
+        source: buildSitemap({ siteUrl: config.siteUrl, name: config.name, pages: config.pages }),
       })
     },
   }

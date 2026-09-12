@@ -25,9 +25,9 @@ export const NamespaceFilter: FC = () => {
 
         {/* Right Column */}
         <div className="order-1 md:order-0">
-          <h1 className="text-hero mb-4 font-heading text-success">
+          <h2 className="text-hero mb-4 font-heading text-success">
             Filter resources across multiple namespaces at once.
-          </h1>
+          </h2>
           <p className="text-lead max-w-lg text-muted-foreground">
             Pick any combination of namespaces and every list view narrows down instantly — no more
             switching context one namespace at a time.
