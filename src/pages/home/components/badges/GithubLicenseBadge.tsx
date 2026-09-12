@@ -1,6 +1,6 @@
 import { Button } from "@litelens/design-system/atoms"
 import type { FC } from "react"
-import { useGetGithubLicense } from "../../../hooks/data-access/useGetGithubLicense"
+import { useGetGithubLicense } from "../../../../hooks/data-access/useGetGithubLicense"
 
 export const GithubLicenseBadge: FC = () => {
   const { data, isPending } = useGetGithubLicense()

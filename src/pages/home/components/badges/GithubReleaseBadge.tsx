@@ -1,6 +1,6 @@
 import { Button, GithubIcon } from "@litelens/design-system/atoms"
 import type { FC } from "react"
-import { useGetGithubLatestRelease } from "../../../hooks/data-access/useGetGithubLatestRelease"
+import { useGetGithubLatestRelease } from "../../../../hooks/data-access/useGetGithubLatestRelease"
 
 export const GithubReleaseBadge: FC = () => {
   const { data, isPending } = useGetGithubLatestRelease()

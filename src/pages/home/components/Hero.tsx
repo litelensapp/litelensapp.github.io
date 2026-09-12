@@ -1,6 +1,6 @@
 import type { FC } from "react"
-import heroDemo from "../../assets/home/hero/hero-demo.png"
-import { ImageWithSkeleton } from "../../components/media/ImageWithSkeleton"
+import heroDemo from "../../../assets/home/hero/hero-demo.png"
+import { ImageWithSkeleton } from "../../../components/media/ImageWithSkeleton"
 import { GithubLicenseBadge } from "./badges/GithubLicenseBadge"
 import { Section } from "./Section"
 

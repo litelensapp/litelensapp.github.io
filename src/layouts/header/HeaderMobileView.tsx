@@ -12,7 +12,7 @@ import { useBreakpoint } from "@litelens/design-system/hooks"
 import { Link } from "@tanstack/react-router"
 import { useEffect, useState, type FC } from "react"
 import { MenuIcon } from "../../components/icons/MenuIcon"
-import { GithubReleaseBadge } from "../../pages/home/badges/GithubReleaseBadge"
+import { GithubReleaseBadge } from "../../pages/home/components/badges/GithubReleaseBadge"
 import { HeaderTitle } from "./HeaderTitle"
 import { HEADER_LINK_GROUPS } from "./nav-items"
 

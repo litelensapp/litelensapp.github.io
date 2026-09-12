@@ -7,6 +7,11 @@ export interface SchemaConfig {
   page: PageMeta
 }
 
+/** Escapes characters that would let embedded JSON break out of a `<script>` tag. */
+function escapeJsonForScript(json: string): string {
+  return json.replace(/</g, "\\u003c").replace(/>/g, "\\u003e").replace(/&/g, "\\u0026")
+}
+
 export function buildSchemaTags(config: SchemaConfig): string {
   const normalizedSiteUrl = config.siteUrl?.replace(/\/+$/, "") ?? ""
   const isHome = config.page.path === "/"
@@ -59,6 +64,9 @@ export function buildSchemaTags(config: SchemaConfig): string {
   })
 
   return schemas
-    .map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`)
+    .map((s) => {
+      const safeJson = escapeJsonForScript(JSON.stringify(s))
+      return `<script type="application/ld+json">${safeJson}</script>`
+    })
     .join("\n  ")
 }

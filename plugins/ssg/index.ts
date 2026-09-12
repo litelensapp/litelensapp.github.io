@@ -98,18 +98,20 @@ export function ssgPlugin({ entry, siteUrl, name, pages }: SsgOptions): Plugin {
 
       const template = readFileSync(resolve(outDir, "index.html"), "utf-8")
 
-      for (const page of pages) {
-        const appHtml = await render(page.path)
-        const withBody = template.replace(
-          '<div id="root"></div>',
-          `<div id="root">${appHtml}</div>`
-        )
-        const html = page.path === "/" ? withBody : applyPageHead(withBody, siteUrl, name, page)
+      await Promise.all(
+        pages.map(async (page) => {
+          const appHtml = await render(page.path)
+          const withBody = template.replace(
+            '<div id="root"></div>',
+            `<div id="root">${appHtml}</div>`
+          )
+          const html = page.path === "/" ? withBody : applyPageHead(withBody, siteUrl, name, page)
 
-        const routeDir = resolve(outDir, page.path.replace(/^\//, ""))
-        mkdirSync(routeDir, { recursive: true })
-        writeFileSync(resolve(routeDir, "index.html"), html)
-      }
+          const routeDir = resolve(outDir, page.path.replace(/^\//, ""))
+          mkdirSync(routeDir, { recursive: true })
+          writeFileSync(resolve(routeDir, "index.html"), html)
+        })
+      )
 
       rmSync(ssrOutDir, { recursive: true, force: true })
     },

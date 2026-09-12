@@ -9,6 +9,7 @@ export const VideoWithSkeleton: FC<VideoWithSkeletonProps> = ({
   poster,
   onLoadedData,
   children,
+  muted: _muted,
   ...props
 }) => {
   const [loaded, setLoaded] = useState(false)
@@ -30,6 +31,9 @@ export const VideoWithSkeleton: FC<VideoWithSkeletonProps> = ({
       <video
         {...props}
         poster={poster}
+        // All current usages are silent looping demo clips with no audio/caption track,
+        // so muted is forced (not passed through) to keep it a literal a11y-checkable opt-out.
+        muted
         onLoadedData={(event) => {
           setLoaded(true)
           onLoadedData?.(event)

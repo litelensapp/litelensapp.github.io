@@ -2,7 +2,7 @@ import type { FC } from "react"
 import pluginsHero from "../../../assets/features/plugins/plugins-hero.png"
 import { ImageWithSkeleton } from "../../../components/media/ImageWithSkeleton"
 
-export const Plugins: FC = () => {
+export const PluginsPage: FC = () => {
   return (
     <section className="bg-background px-6 py-4 md:pt-16 md:pb-16">
       <div className="mx-auto max-w-3xl text-center">

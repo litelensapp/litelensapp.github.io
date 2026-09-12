@@ -9,7 +9,7 @@ import {
 import { cn } from "@litelens/design-system/utils"
 import { useMatchRoute, useNavigate } from "@tanstack/react-router"
 import type { FC } from "react"
-import { GithubReleaseBadge } from "../../pages/home/badges/GithubReleaseBadge"
+import { GithubReleaseBadge } from "../../pages/home/components/badges/GithubReleaseBadge"
 import { HEADER_LINK_GROUPS } from "./nav-items"
 
 export const HeaderDesktopView: FC = () => {
