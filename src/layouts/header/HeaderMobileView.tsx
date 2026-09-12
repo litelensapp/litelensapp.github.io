@@ -40,7 +40,7 @@ export const HeaderMobileView: FC = () => {
           className="inset-0 h-dvh w-full max-w-none gap-0 rounded-none border-l-0 p-4"
         >
           <SheetHeader className="p-0">
-            <HeaderTitle className="w-fit" />
+            <SheetClose render={<HeaderTitle className="w-fit" />} />
             <SheetTitle className="sr-only">Navigation menu</SheetTitle>
           </SheetHeader>
 
