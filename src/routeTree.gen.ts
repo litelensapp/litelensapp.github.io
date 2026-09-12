@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as FeaturesCoreRouteImport } from './routes/features/core'
+import { Route as FeaturesPluginsRouteImport } from './routes/features/plugins'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +23,40 @@ const FeaturesCoreRoute = FeaturesCoreRouteImport.update({
   path: '/features/core',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FeaturesPluginsRoute = FeaturesPluginsRouteImport.update({
+  id: '/features/plugins',
+  path: '/features/plugins',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/features/core': typeof FeaturesCoreRoute
+  '/features/plugins': typeof FeaturesPluginsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/features/core': typeof FeaturesCoreRoute
+  '/features/plugins': typeof FeaturesPluginsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/features/core': typeof FeaturesCoreRoute
+  '/features/plugins': typeof FeaturesPluginsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/features/core'
+  fullPaths: '/' | '/features/core' | '/features/plugins'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/features/core'
-  id: '__root__' | '/' | '/features/core'
+  to: '/' | '/features/core' | '/features/plugins'
+  id: '__root__' | '/' | '/features/core' | '/features/plugins'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   FeaturesCoreRoute: typeof FeaturesCoreRoute
+  FeaturesPluginsRoute: typeof FeaturesPluginsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FeaturesCoreRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/features/plugins': {
+      id: '/features/plugins'
+      path: '/features/plugins'
+      fullPath: '/features/plugins'
+      preLoaderRoute: typeof FeaturesPluginsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   FeaturesCoreRoute: FeaturesCoreRoute,
+  FeaturesPluginsRoute: FeaturesPluginsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

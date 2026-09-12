@@ -20,7 +20,7 @@ export const Hero: FC = () => {
         </div>
 
         {/* Right Column */}
-        <div className="overflow-hidden rounded-xl border border-border bg-muted shadow-md">
+        <div className="overflow-hidden rounded-xl border border-border bg-muted shadow-xl transition-transform duration-300 hover:scale-105">
           <img src={heroDemo} alt="Litelens dashboard" className="h-auto w-full object-cover" />
         </div>
       </div>

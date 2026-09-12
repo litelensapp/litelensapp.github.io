@@ -53,6 +53,12 @@ export const Header: FC = () => {
             >
               Core
             </DropdownMenuItem>
+            <DropdownMenuItem
+              className="rounded-lg px-4 py-3"
+              onClick={() => navigate({ to: "/features/plugins" })}
+            >
+              Plugins
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </nav>

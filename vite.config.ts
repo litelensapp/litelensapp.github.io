@@ -29,7 +29,7 @@ export default defineConfig(({ command, mode }) => {
       }),
       ssgPlugin({
         entry: "./src/entry-server.tsx",
-        routes: ["/", "/features/core"],
+        routes: ["/", "/features/core", "/features/plugins"],
       }),
     ],
   }
