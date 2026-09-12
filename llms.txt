@@ -31,6 +31,14 @@
 - Native app, not Electron-based — lightweight and fast
 - Watch-based UI that reflects live Kubernetes cluster state
 
+## Features
+
+**Core Features** (https://litelensapp.github.io/features/core)
+- Browse every workload in a live, watch-based view, stream pod logs and exec into a terminal, port-forward with one click, and filter across namespaces — all from the Litelens desktop app.
+
+**Plugins** (https://litelensapp.github.io/features/plugins)
+- Add new capabilities to Litelens without waiting on a core release. Install plugins from the official marketplace, or point Litelens at your own custom marketplace.
+
 ## Resources
 
 - App: https://litelensapp.github.io/
